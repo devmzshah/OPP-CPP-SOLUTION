@@ -1,0 +1,115 @@
+#include <iostream>
+using namespace std;
+
+
+class ReadingMaterial {
+protected:
+    string title;
+    string author;
+    int id;
+
+public:
+    ReadingMaterial(string t, string a, int i) {
+        title = t;
+        author = a;
+        id = i;
+    }
+
+    virtual void display() 
+	{
+	}
+    
+};
+
+
+class Book : public ReadingMaterial {
+private:
+    int pages;
+    string genre;
+
+public:
+    Book(string t, string a, int i, int p, string g)
+        : ReadingMaterial(t, a, i) {
+        pages = p;
+        genre = g;
+    }
+
+    void display() override {
+        cout<<"Book name "<<title<<endl;
+        cout<<"Book author "<<author<<endl;
+        cout<<"Book id "<<id<<endl;
+        cout << "Pages: " << pages << endl;
+        cout << "Genre: " << genre << endl;
+        
+        cout << "----------------------" << endl;
+    }
+};
+
+
+class Magazine : public ReadingMaterial {
+private:
+    int issueNumber;
+    string month;
+
+public:
+    Magazine(string t, string a, int i, int issue, string m)
+        : ReadingMaterial(t, a, i) {
+        issueNumber = issue;
+        month = m;
+    }
+
+    void display() override {
+        cout<<"Magzine title is "<<title<<endl;
+        cout<<"Magzine author is "<<author<<endl;
+        cout<<"Magzine id is "<<id<<endl;
+        cout << "Issue Number: " << issueNumber << endl;
+        cout << "Month: " << month << endl;
+        cout << "----------------------" << endl;
+    }
+};
+
+
+class AudioBook : public ReadingMaterial {
+private:
+    int duration; 
+    string narrator;
+
+public:
+    AudioBook(string t, string a, int i, int d, string n)
+        : ReadingMaterial(t, a, i) {
+        narrator = n;
+        duration = d;
+    }
+
+    void display() override {
+        cout<<"Audio Book title is "<<title<<endl;
+        cout<<"Audio Book auhtor is "<<author<<endl;
+        cout<<"Audio book id is "<<id<<endl;
+        cout << "Duration (minutes): " << duration << endl;
+        cout << "Narrator: " << narrator << endl;
+        cout << "----------------------" << endl;
+    }
+
+    };
+
+
+int main() {
+
+    Book b1("The Alchemist", "Paulo Coelho", 101, 350, "Fiction");
+    Book b2("C++ Basics", "John Smith", 102, 200, "Education");
+
+    Magazine m1("Tech Today", "Editorial Team", 201, 15, "January");
+    Magazine m2("Science World", "Editorial Team", 202, 22, "March");
+
+    AudioBook a1("Rich Dad Poor Dad", "Robert Kiyosaki", 301, 90, "Tom Lee");
+    AudioBook a2("Short Stories", "Various Authors", 302, 45, "Anna Brown");
+
+    b1.display();
+    b2.display();
+    m1.display();
+    m2.display();
+    a1.display();
+    a2.display();
+
+    return 0;
+}
